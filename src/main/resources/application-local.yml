@@ -1,0 +1,38 @@
+server:
+  port: 8092
+
+spring:
+  application:
+    name: employee
+  data:
+    mongodb:
+      uri: mongodb://admin:admin@127.0.0.1:27017/local-test
+  output.ansi.enabled: ALWAYS
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: true
+    kubernetes:
+      discovery:
+        enabled: false
+
+feign:
+  department:
+    name: department
+    url : localhost:8091
+  employee:
+    name: employee
+    url : localhost:8090
+
+logging:
+  pattern: 
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
