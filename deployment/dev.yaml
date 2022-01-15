@@ -39,6 +39,8 @@ spec:
             secretKeyRef:
               name: mongodb
               key: database-password
+        - name: NAMESPACE
+          value:  {{namespace}}
 ---
 apiVersion: v1
 kind: Service

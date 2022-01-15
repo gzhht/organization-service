@@ -3,8 +3,12 @@ spring:
     name: organization
   data:
     mongodb:
-      uri: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb.default/${MONGO_DATABASE}
-      
+      uri: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb.${NAMESPACE}/${MONGO_DATABASE}
+  cloud:
+    kubernetes:
+      client:
+       namespace: ${NAMESPACE}
+
 logging:
   pattern: 
     console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
